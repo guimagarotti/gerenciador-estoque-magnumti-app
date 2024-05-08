@@ -1,0 +1,80 @@
+.card {
+    font-family: "Work Sans", sans-serif;
+    background-color: rgba(255, 255, 255, 0.36);
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+    border: 1px solid #ccc;
+}
+
+.card .card-header .card-title {
+    display: block;
+    width: calc(100% - 40px);
+}
+
+.card .card-header .iconSettings {
+    color: #000;
+    font-size: 18px;
+}
+
+.card .card-body .info-sequence {
+    display: flex;
+    flex-direction: column;
+}
+
+.card .card-body .info-sequence .line {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 7px;
+}
+
+.card .card-body .info-sequence .line:last-child {
+    margin-bottom: 0px;
+}
+
+.card .card-footer {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 5px 0;
+    background-color: transparent;
+}
+
+.card .card-footer .actions button {
+    border: none;
+}
+
+.card .card-footer .actions i {
+    font-size: 14pt;
+    padding: 0 .3rem 0 .3rem;
+}
+
+.card.empty {
+    border: 2px solid rgb(236, 163, 163);
+}
+
+@media (max-width: 1399px) {
+    .card .card-footer .actions i {
+        padding: 0 .1rem 0 .1rem;
+    }
+}
+
+@media (max-width: 991px) {
+    .card .card-footer {
+        padding: 5px 0 !important;
+    }
+
+    .card .card-footer .actions {
+        margin: 0 !important;
+    }
+}
+
+@media (max-width: 1199px) {
+    .card .card-footer .actions i {
+        padding: 0 .02rem 0 .02rem !important;
+    }
+}
+
+@media (max-width: 575px) {
+    .card .card-footer .actions i {
+        padding: 0 .5rem 0 .5rem !important;
+    }
+}

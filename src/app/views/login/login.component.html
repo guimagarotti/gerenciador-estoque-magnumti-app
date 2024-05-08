@@ -1,0 +1,28 @@
+<main>
+    <div class="login-container">
+        <div class="image-container">
+            <img src="../../../assets/images/logo.png" alt="Logo MagnumTI" width="150">
+        </div>
+        <form>
+            <div class="mb-3">
+                <label for="basic-url" class="form-label">Usuário</label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="pi pi-envelope"></i></span>
+                  <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="basic-url" class="form-label">Senha</label>
+                <div class="input-group input-field input-field-password">
+                  <span class="input-group-text"><i class="pi pi-lock"></i></span>
+                  <input [type]="passwordEyes.signIn? 'password' : 'text'" class="form-control" style="border-right: none;">
+                  <button class="btn-password" (click)="changePasswordEye('signIn')"><i class="pi" [ngClass]="{'pi-eye': passwordEyes.signIn, 'pi-eye-slash': !passwordEyes.signIn}"></i></button>
+                </div>
+            </div>
+        </form>
+
+        <div class="btn-container">
+            <button type="submit" class="btn btn-primary mt-2" [routerLink]="['/homepage']"><i class="pi pi-sign-in pe-2"></i>Entrar</button>
+        </div>
+    </div>
+</main>

@@ -1,0 +1,52 @@
+<div class="card">
+    <div style="border-bottom: 1px solid #C7C7C7; text-align: center;">
+        <img src="../../../../assets/images/logo.png" alt="..." height="150">
+    </div>
+    <div class="card-header">
+        <div class="row mt-1">
+            <div class="col-12 d-flex justify-content-between">
+                <h5 class="card-title text-truncate m-0" [title]="produto.nome">
+                    {{ produto.nome }}
+                </h5>
+                <span class="iconSettings">
+                    <i class="pi pi-truck" style="color: #ff5722"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="info-sequence m-0">
+                <div class="line">
+                    <span class="title">Fabricante:</span>
+                    <span class="value">{{ produto.fabricante }}</span>
+                </div>
+                <div class="line">
+                    <span class="title">Categoria:</span>
+                    <span class="value">{{ produto.categoria }}</span>
+                </div>
+                <div class="line">
+                    <span class="title">Validade:</span>
+                    <span class="value">{{ produto.validade }}</span>
+                </div>
+                <div class="line">
+                    <span class="title">Quantidade:</span>
+                    <span class="value">{{ produto.quantidade }}</span>
+                </div>
+                <div class="line">
+                    <span class="title">Lote:</span>
+                    <span class="value">{{ produto.lote }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <div class="row me-1">
+            <div class="col-12 d-flex justify-content-end">
+                <button class="btn btn-sm" aria-placeholder="asdasdaad"><i class="pi pi-wrench"
+                        style="color: #ff5722"></i></button>
+                <button class="btn btn-sm"><i class="pi pi-times text-danger"></i></button>
+            </div>
+        </div>
+    </div>
+</div>

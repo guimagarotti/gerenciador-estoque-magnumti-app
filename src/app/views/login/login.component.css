@@ -1,0 +1,70 @@
+main {
+    background-color: #f6f6f6 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    height: 92vh !important;
+}
+
+.image-container {
+    text-align: center;
+}
+
+.login-container {
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 15px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    border: 1px solid #b7b7b7;
+    padding: 25px;
+    max-width: 350px;
+    width: 100%;
+}
+
+.login-container button {
+    width: 35%;
+    padding: 8px;
+    background-color: #ff5722;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.login-container button:hover {
+    cursor: pointer;
+    background-color: #fc450d;
+}
+
+.btn-password {
+    background-color: transparent !important;
+    border: 1px solid #DEE2E6 !important;
+    border-left: none !important;
+    width: 12% !important;
+    height: 100% !important;
+    color: #acacac !important;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.input-group-text {
+    background-color: #ff5722;
+}
+
+.input-group-text i {
+    color: #fff;
+}
+
+.input-field {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.input-field-password {
+    grid-template-columns: 15% 70% 15%;
+}

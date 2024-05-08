@@ -1,0 +1,56 @@
+<section>
+    <form class="row g-3 header" [formGroup]="produtoForm">
+        <div class="col-md-3">
+            <label for="inputEmail4" class="form-label">Nome</label>
+            <input type="email" class="form-control" id="inputEmail4">
+        </div>
+        <div class="col-md-3">
+            <label for="inputEmail4" class="form-label">Categoria</label>
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Selecione</option>
+                <option value="1">Cachorro</option>
+                <option value="2">Gato</option>
+                <option value="3">Ave</option>
+                <option value="4">Peixe</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label for="inputPassword4" class="form-label">Código</label>
+            <input type="password" class="form-control" id="inputPassword4">
+        </div>
+        <div class="col-md-2">
+            <div class="form-check form-switch" style="margin-top: 36px !important; margin-left: 35px;">
+                <label class="form-check-label">Status</label>
+                <input class="form-check-input" type="checkbox" role="switch" checked>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Fornecedor</label>
+            <input type="text" class="form-control">
+        </div>
+        <div class="col-3">
+            <label class="form-label">Quantidade</label>
+            <input type="number" class="form-control">
+        </div>
+        <div class="col-md-5">
+            <label class="form-label">Data</label>
+            <input type="date" class="form-control">
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">Nível Mínimo (Estoque)</label>
+            <input type="number" class="form-control">
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">Nível Máximo (Estoque)</label>
+            <input type="number" class="form-control">
+        </div>
+
+    </form>
+    <div class="footer">
+        <div class="col-12 d-flex justify-content-end">
+            <button type="submit" class="btn btn-sm btn-primary"><i class="pi pi-save pe-1"
+                    style="font-size: 0.8rem;"></i>
+                Cadastrar</button>
+        </div>
+    </div>
+</section>

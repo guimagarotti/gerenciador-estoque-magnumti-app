@@ -1,0 +1,29 @@
+.container-fluid {
+    font-family: "Work Sans", sans-serif;
+}
+
+.container-fluid .header {
+    width: 100%;
+}
+
+.container-fluid .header .title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.container-fluid .header .filters {
+    display: flex;
+    gap: 40px;
+    margin-top: 0.4rem;
+}
+
+.container-fluid .header .filters .input-group-text:hover {
+    background-color: #dddedf;
+    transition: .5s;
+}
+
+.button-hover:hover {
+    cursor: pointer !important;
+    background-color: #fa4108 !important;
+}
