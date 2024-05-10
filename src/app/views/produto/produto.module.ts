@@ -6,6 +6,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ProdutoFormComponent } from './produto-form/produto-form.component';
 import { RouterModule } from '@angular/router';
+import { EmptyContentModule } from 'src/app/shared/empty-content/empty-content.module';
+import { AlertModule } from 'ngx-bootstrap/alert';
 
 @NgModule({
   declarations: [ProdutoComponent, ProdutoFormComponent],
@@ -15,7 +17,9 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     BrowserModule,
     NgxSpinnerModule,
-    RouterModule
+    RouterModule,
+    EmptyContentModule,
+    AlertModule
   ],
   exports: [ProdutoComponent, ProdutoFormComponent]
 })

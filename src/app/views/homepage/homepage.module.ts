@@ -4,6 +4,7 @@ import { HomepageComponent } from './homepage.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 @NgModule({
   declarations: [HomepageComponent],
@@ -11,7 +12,8 @@ import { BrowserModule } from '@angular/platform-browser';
     CommonModule,
     FormsModule,
     RouterModule,
-    BrowserModule
+    BrowserModule,
+    TooltipModule
   ],
   exports: [HomepageComponent]
 })

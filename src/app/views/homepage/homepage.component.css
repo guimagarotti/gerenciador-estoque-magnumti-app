@@ -9,9 +9,9 @@
 }
 
 .home-title {
-    position: absolute; 
-    top: 190px; 
-    font-family: 'Work Sans', sans-serif; 
+    position: absolute;
+    top: 190px;
+    font-family: 'Work Sans', sans-serif;
     font-size: 1.4em;
     color: #0e0e0e;
     font-weight: bold;
@@ -29,7 +29,7 @@
 
 .cardRoutes:hover {
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    cursor: pointer;    
+    cursor: pointer;
     transform: scale(1.07);
 }
 
@@ -67,8 +67,68 @@ li {
     cursor: pointer;
 }
 
-@media only screen and (min-width : 768px) and (max-width: 1150px) {
-    .name {
-        font-size: 9pt;
+@media (max-width: 992px) {
+    .home-title {
+        font-size: 17px;
+        top: 195px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .home-title {
+        font-size: 13px;
+        top: 202px;
+    }
+}
+
+@media(max-width: 575.5px) {
+    .module-cards .first-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .module-cards .secound-group {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media(max-width: 547px) {
+    .home-title {
+        top: 192px;
+        text-align: center;
+    }
+}
+
+@media(max-width: 436.5px) {
+    .home-title {
+        top: 180px;
+        text-align: center;
+    }
+
+    .module-cards .first-group {
+        padding-top: 20px;
+    }
+}
+
+@media(max-width: 409.5px) {
+    .module-cards .first-group {
+        padding-top: 30px;
+    }
+}
+
+@media(max-width: 390.5px) {
+    .home-title {
+        top: 170px;
+        text-align: center;
+    }
+
+    .divisor {
+        top: 220px !important;
+    }
+
+    .module-cards .first-group {
+        padding-top: 30px;
     }
 }

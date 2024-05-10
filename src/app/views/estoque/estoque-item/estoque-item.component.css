@@ -4,6 +4,36 @@
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
     border: 1px solid #ccc;
+    position: relative;
+}
+
+.card .card-header {
+    font-family: 'Work Sans', sans-serif;
+}
+
+.card .title-between {
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    background-color: #fff;
+    padding: 0 7px;
+    text-align: center;
+    font-family: 'Work Sans', sans-serif;
+    color: #aaa;
+}
+
+.card .icon-between {
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    background-color: #fff;
+    padding: 0 7px;
+    text-align: center;
+}
+
+.card .icon-between i {
+    font-size: 1.2rem;
+    color: #aaa;
 }
 
 .card .card-header .card-title {
@@ -29,6 +59,15 @@
 
 .card .card-body .info-sequence .line:last-child {
     margin-bottom: 0px;
+}
+
+.card .card-body .info-sequence .line .title {
+    /* background-color: red; */
+    font-weight: 500;
+}
+
+.card .card-body .info-sequence .line .value {
+    /* background-color: aqua; */
 }
 
 .card .card-footer {

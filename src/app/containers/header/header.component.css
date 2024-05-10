@@ -1,5 +1,5 @@
 .container-fluid {
-    background-color: #fff;
+    background-color: #4b4b4b;
 }
 
 :host ::ng-deep .dark-panel.p-dialog {
@@ -46,14 +46,14 @@ header nav>ul li>a {
     text-decoration: none;
     margin: 0;
     font-weight: 500;
-    color: #ff5722;
+    color: #eeeeee;
     padding: 5px;
     transition: .2s;
 }
 
 header nav>ul li>a:hover {
-    color: #ff5722;
-    border-bottom: 1px solid #ff5722;
+    color: #eeeeee;
+    border-bottom: 1px solid #eeeeee;
     transition: 0.6s;
 }
 
@@ -61,8 +61,8 @@ header nav>ul li>a.active {
     text-decoration: none;
     margin: 0;
     font-weight: 500;
-    color: #ff5722;
-    border-bottom: 1px solid #ff5722;
+    color: #eeeeee;
+    border-bottom: 1px solid #eeeeee;
 }
 
 header nav>ul li .padding {
@@ -162,6 +162,15 @@ header .buttons button a {
     display: block;
     height: 30px;
     padding-top: 2px;
+}
+
+.cogDesign {
+    background-color: #4b4b4b;
+    color: #eeeeee;
+}
+
+.cogDesign i {
+    color: #eeeeee;
 }
 
 header .burguer {
@@ -311,22 +320,21 @@ header .buttonSidebard {
     justify-content: center;
     text-align: center;
     /* border: 1px solid #aaa; */
-    color: #aaa;
     cursor: pointer;
-    color: #888;
-    box-shadow: 0 12px 35px 0 rgba(255, 235, 167, .15);
+    color: #eeeeee;
+    /* box-shadow: 0 14px 35px 0 rgba(255, 235, 167, .15); */
 }
 
 .section-dropdown {
     position: absolute;
     padding: 5px;
-    background-color: #aaa;
+    background-color: #4b4b4b;
     top: 55px;
     right: 0;
     width: 180px;
     border-radius: 4px;
     display: block;
-    box-shadow: 0 14px 35px 0 rgba(9, 9, 12, 0.4);
+    box-shadow: 0 4px 15px 0 rgba(9, 9, 12, 0.4);
     z-index: 10;
     opacity: 0;
     pointer-events: none;
@@ -348,7 +356,7 @@ header .buttonSidebard {
     height: 0;
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
-    border-bottom: 8px solid #aaa;
+    border-bottom: 8px solid #4b4b4b;
     content: '';
     display: block;
     z-index: 2;

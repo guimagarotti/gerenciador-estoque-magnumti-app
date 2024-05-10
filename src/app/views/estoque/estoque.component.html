@@ -1,4 +1,4 @@
-<div class="container-fluid" style="overflow-y: hidden;">
+<div class="container-fluid mb-3" style="overflow-y: hidden;">
     <div class="header">        
         <div class="row">
             <div class="col-12">
@@ -13,7 +13,16 @@
             </div>
         </div>            
         
-        <!-- <div class="filters">
+        <div class="filters">
+            <div class="status">
+                <div class="input-group input-group-sm">
+                    <select class="form-select form-select-sm">
+                        <option selected disabled>Categoria</option>
+                        <option value="true">Ativo</option>
+                        <option value="false">Não Ativo</option>
+                    </select>
+                </div>
+            </div>
             <div class="parameter">
                 <div class="input-group input-group-sm">
                     <input type="text" class="form-control" placeholder="Digite o nome...">
@@ -21,22 +30,16 @@
                     <button class="input-group-text"><i class="pi pi-sync"></i></button>
                 </div>
             </div>
-            <div class="status">
-                <div class="input-group input-group-sm">
-                    <select class="form-select form-select-sm">
-                        <option selected disabled>Status</option>
-                        <option value="true">Ativo</option>
-                        <option value="false">Não Ativo</option>
-                    </select>
-                </div>
-            </div>
-        </div> -->
+        </div>
     </div>
-    <!-- <hr> -->
 
     <div class="row pt-2" style="position: relative;">
         <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-4" *ngFor="let produto of produtos; let i = index">
-            <app-estoque-item [produto]="produto"></app-estoque-item>
+            <app-estoque-item [produto]="produto" (eventRemoveProduct)="receiveEventRemoveProduct($event)"></app-estoque-item>
+        </div>
+
+        <div class="col-12" *ngIf="!produtos.length">
+            <app-empty-content message="Não há itens em estoque cadastrados!"></app-empty-content>
         </div>
     </div>
 </div>

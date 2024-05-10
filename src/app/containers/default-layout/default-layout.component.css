@@ -7,6 +7,17 @@ section.container-fluid {
     min-height: 100vh;
 }
 
+.text {
+    font-size: 18px;
+    font-family: 'Work Sans', sans-serif;
+    color: #fff;
+}
+
+.icon {
+    font-size: 3rem;
+    color: #fff;
+}
+
 @media (max-width: 1230px) {
     .container {
         width: 1100px;

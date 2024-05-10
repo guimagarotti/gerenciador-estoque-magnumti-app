@@ -3,7 +3,10 @@
 <section class="container-fluid">
     <ngx-spinner name="spinnerDefault" bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-pulse-sync"
         [fullScreen]="true">
-        <p style="color: white"> Carregando... </p>
+        <div class="d-flex flex-column text-center">
+            <i class="pi pi-spin pi-spinner icon"></i>
+            <span class="mt-2 text">Carregando...</span>
+        </div>
     </ngx-spinner>
     <div class="container pt-4">
         <router-outlet></router-outlet>

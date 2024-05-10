@@ -1,56 +1,146 @@
-<section>
-    <form class="row g-3 header" [formGroup]="produtoForm">
-        <div class="col-md-3">
-            <label for="inputEmail4" class="form-label">Nome</label>
-            <input type="email" class="form-control" id="inputEmail4">
-        </div>
-        <div class="col-md-3">
-            <label for="inputEmail4" class="form-label">Categoria</label>
-            <select class="form-select" aria-label="Default select example">
-                <option selected>Selecione</option>
-                <option value="1">Cachorro</option>
-                <option value="2">Gato</option>
-                <option value="3">Ave</option>
-                <option value="4">Peixe</option>
-            </select>
-        </div>
-        <div class="col-md-4">
-            <label for="inputPassword4" class="form-label">Código</label>
-            <input type="password" class="form-control" id="inputPassword4">
-        </div>
-        <div class="col-md-2">
-            <div class="form-check form-switch" style="margin-top: 36px !important; margin-left: 35px;">
-                <label class="form-check-label">Status</label>
-                <input class="form-check-input" type="checkbox" role="switch" checked>
+<section class="mb-3">
+    <div class="row">
+        <div class="col-12"
+            style="background-color: #ececec; border-bottom: 1px solid #ccc; padding: 10px 30px; display: flex;">
+            <div class="col-10">
+                <span style="font-size: 19px; font-family: 'Work Sans', sans-serif;"><i
+                        class="pi pi-cart-arrow-down pe-1"></i> Produto</span>
+            </div>
+            <div class="col-2 d-flex justify-content-end">
+                <button class="btn btn-sm" routerLink="/produto"><i class="pi pi-undo"
+                        style="font-size: 1.1rem; color: #aaa;"></i></button>
             </div>
         </div>
-        <div class="col-md-4">
-            <label class="form-label">Fornecedor</label>
-            <input type="text" class="form-control">
-        </div>
-        <div class="col-3">
-            <label class="form-label">Quantidade</label>
-            <input type="number" class="form-control">
-        </div>
-        <div class="col-md-5">
-            <label class="form-label">Data</label>
-            <input type="date" class="form-control">
-        </div>
-        <div class="col-md-3">
-            <label class="form-label">Nível Mínimo (Estoque)</label>
-            <input type="number" class="form-control">
-        </div>
-        <div class="col-md-3">
-            <label class="form-label">Nível Máximo (Estoque)</label>
-            <input type="number" class="form-control">
-        </div>
+    </div>
+    <form class="row g-3 header mt-1" [formGroup]="produtoForm">
+        <div class="card col-12 mt-2">
+            <div class="title-between">
+                <h6>Produto</h6>
+            </div>
+            <div class="icon-between">
+                <i class="pi pi-cart-arrow-down"></i>
+            </div>
 
+            <div class="card-body p-2 mt-2">
+                <div class="row">
+                    <div class="col-12 col-md-6 col-lg-3 mb-2">
+                        <label class="form-label">Nome</label>
+                        <input type="email" class="form-control" formControlName="name" [ngClass]="applyErrors('name')">
+                        <div class="invalid-feedback" *ngIf="produtoForm.get('name')?.hasError('required')">
+                            Nome obrigatório!
+                        </div>
+                        <div class="invalid-feedback" *ngIf="produtoForm.get('name')?.hasError('minlength')">
+                            Mínimo 3 caracteres!
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3 mb-2">
+                        <label class="form-label">Categoria</label>
+                        <select class="form-select" formControlName="category" [ngClass]="applyErrors('category')">
+                            <option value="null" selected>Selecione</option>
+                            <option [value]="categoryType.CACHORRO">Cachorro</option>
+                            <option [value]="categoryType.GATO">Gato</option>
+                            <option [value]="categoryType.AVE">Ave</option>
+                            <option [value]="categoryType.PEIXE">Peixe</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Categoria obrigatória!
+                        </div>
+                    </div>
+                    <div class="col-7 col-md-5 col-lg-4 mb-2">
+                        <label class="form-label">Código</label>
+                        <input type="text" class="form-control" formControlName="code" [ngClass]="applyErrors('code')">
+                        <div class="invalid-feedback" *ngIf="produtoForm.get('code')?.hasError('required')">
+                            Código obrigatório!
+                        </div>
+                        <div class="invalid-feedback" *ngIf="produtoForm.get('code')?.hasError('minlength')">
+                            Mínimo 3 caracteres!
+                        </div>
+                    </div>
+                    <div class="col-5 col-md-3 col-lg-2 mb-2">
+                        <div class="form-check form-switch switchContent">
+                            <label class="form-check-label">Status</label>
+                            <input class="form-check-input" type="checkbox" role="switch" checked
+                                formControlName="status">
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-5 mb-2">
+                        <label class="form-label">Fornecedor</label>
+                        <input type="text" class="form-control" formControlName="manufacturer"
+                            [ngClass]="applyErrors('manufacturer')">
+                        <div class="invalid-feedback" *ngIf="produtoForm.get('manufacturer')?.hasError('required')">
+                            Fornecedor obrigatório!
+                        </div>
+                        <div class="invalid-feedback" *ngIf="produtoForm.get('manufacturer')?.hasError('minlength')">
+                            Mínimo 3 caracteres!
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-6 col-lg-7 mb-2">
+                        <label class="form-label">Quantidade</label>
+                        <input type="number" min="0" class="form-control" formControlName="quantity"
+                            [ngClass]="applyErrors('quantity')">
+                        <div class="invalid-feedback" *ngIf="produtoForm.get('quantity')?.hasError('required')">
+                            Quantidade obrigatória!
+                        </div>
+                        <div class="invalid-feedback" *ngIf="produtoForm.get('quantity')?.hasError('min')">
+                            Valor deve ser maior que 0!
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-6 mb-2">
+                        <label class="form-label">Validade</label>
+                        <input type="date" class="form-control" formControlName="date" [ngClass]="applyErrors('date')">
+                        <div class="invalid-feedback" *ngIf="produtoForm.get('date')?.hasError('required')">
+                            Data obrigatória!
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3 mb-2">
+                        <label class="form-label">Estoque Mínimo</label>
+                        <input type="number" min="0" class="form-control" formControlName="minimumLevel"
+                            [ngClass]="applyErrors('minimumLevel')">
+                        <div class="invalid-feedback" *ngIf="produtoForm.get('minimumLevel')?.hasError('required')">
+                            Mínimo obrigatório!
+                        </div>
+                        <div class="invalid-feedback" *ngIf="produtoForm.get('minimumLevel')?.hasError('min')">
+                            Valor deve ser maior que 0!
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3 mb-2">
+                        <label class="form-label">Estoque Máximo</label>
+                        <input type="number" min="0" class="form-control" formControlName="maximumLevel"
+                            [ngClass]="applyErrors('maximumLevel')">
+                        <div class="invalid-feedback" *ngIf="produtoForm.get('maximumLevel')?.hasError('required')">
+                            Máximo obrigatório!
+                        </div>
+                        <div class="invalid-feedback" *ngIf="produtoForm.get('maximumLevel')?.hasError('min')">
+                            Valor deve ser maior que 0!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </form>
     <div class="footer">
         <div class="col-12 d-flex justify-content-end">
-            <button type="submit" class="btn btn-sm btn-primary"><i class="pi pi-save pe-1"
-                    style="font-size: 0.8rem;"></i>
+            <button type="submit" class="btn btn-sm btn-post" (click)="submitForm()"><i class="pi pi-save pe-1"
+                    style="font-size: 0.8rem; color: #fff;"></i>
                 Cadastrar</button>
         </div>
     </div>
 </section>
+
+<div class="btnAddProduto" *ngIf="successStatus && this.produtoId">
+    <alert type="success">
+        <strong>Parabéns!</strong> Você editou seu produto com sucesso.
+    </alert>
+</div>
+
+<div class="btnAddProduto" *ngIf="successStatus && !this.produtoId">
+    <alert type="success">
+        <strong>Parabéns!</strong> Você cadastrou seu produto com sucesso.
+    </alert>
+</div>
+
+<div class="btnAddProduto" *ngIf="errStatus">
+    <alert type="danger">
+        <strong>Erro!</strong> Formulário com dados faltantes.
+    </alert>
+</div>

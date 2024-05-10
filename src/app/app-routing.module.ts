@@ -5,13 +5,12 @@ import { HomepageComponent } from './views/homepage/homepage.component';
 import { ProdutoComponent } from './views/produto/produto.component';
 import { EstoqueComponent } from './views/estoque/estoque.component';
 import { AboutUsComponent } from './views/about-us/about-us.component';
-import { EstoqueFormComponent } from './views/estoque/estoque-form/estoque-form.component';
 import { ProdutoFormComponent } from './views/produto/produto-form/produto-form.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'homepage',
     pathMatch: 'full'
   },
   {
@@ -50,6 +49,13 @@ const routes: Routes = [
     },
   },
   {
+    path: 'produto/form/:id',
+    component: ProdutoFormComponent,
+    data: {
+      title: 'Produto Form'
+    },
+  },
+  {
     path: 'estoque',
     component: EstoqueComponent,
     data: {
@@ -57,12 +63,12 @@ const routes: Routes = [
     },
   },
   {
-    path: 'estoque/form',
-    component: EstoqueFormComponent,
+    path: '**',
+    component: HomepageComponent,
     data: {
-      title: 'Estoque Form'
-    },
-  },
+      title: 'Homepage'
+    }
+  }
 ];
 
 @NgModule({

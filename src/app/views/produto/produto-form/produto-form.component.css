@@ -12,12 +12,48 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
 }
 
 .header {
-    width: 100%;
     padding: 25px;
+}
+
+.card {
+    position: relative;
+    border: 1px solid #ccc;
+}
+
+.card .card-header {
+    font-family: 'Work Sans', sans-serif;
+}
+
+.card .title-between {
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    background-color: #fff;
+    padding: 0 7px;
+    text-align: center;
+    font-family: 'Work Sans', sans-serif;
+    color: #ccc;
+}
+
+.card .icon-between {
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    background-color: #fff;
+    padding: 0 7px;
+    text-align: center;
+}
+
+.card .icon-between i {
+    font-size: 1.2rem;
+    color: #ccc;
+}
+
+.switchContent {
+    margin-top: 36px !important;
 }
 
 .footer {
@@ -30,10 +66,20 @@ section {
     padding: 25px;
 }
 
-@media (max-width: 400px) {
-    :host ::ng-deep .p-steps {
-        .p-steps-title {
-            color: white !important;
-        }
-    }
+.footer .btn-post {
+    background-color: #ff5722;
+    color: #fff;
+}
+
+.footer .btn-post:hover {
+    cursor: pointer;
+    background-color: #fc450d;
+}
+
+.btnAddProduto {
+    position: fixed;
+    bottom: 1rem;
+    right: 0;
+    z-index: 1;
+    transition: .4s;
 }
