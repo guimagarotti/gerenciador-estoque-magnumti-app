@@ -8,6 +8,8 @@ import { RouterModule } from '@angular/router';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { EmptyContentModule } from 'src/app/shared/empty-content/empty-content.module';
+import { ToastModule } from 'primeng/toast';
+import { AlertModule } from 'ngx-bootstrap/alert';
 
 @NgModule({
   declarations: [EstoqueComponent, EstoqueItemComponent],
@@ -19,7 +21,9 @@ import { EmptyContentModule } from 'src/app/shared/empty-content/empty-content.m
     RouterModule,
     ModalModule.forRoot(),
     TooltipModule.forRoot(),
-    EmptyContentModule
+    EmptyContentModule,
+    ToastModule,
+    AlertModule
   ],
   exports: [EstoqueComponent]
 })

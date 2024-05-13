@@ -1,45 +1,43 @@
 <div class="container-fluid mb-3" style="overflow-y: hidden;">
-    <div class="header">        
-        <div class="row">
-            <div class="col-12">
-                <div class="title">
-                    <div class="image">
-                        <img src="../../../../assets/images/logo.png"  alt="..." height="130">
-                    </div>
-                    <div class="text">
-                        <h2>Estoque</h2>
-                    </div>
-                </div>
-            </div>
-        </div>            
-        
+  <div class="header">
+    <div class="row">
+      <div class="col-12">
+        <div class="title">
+          <div class="image">
+            <img src="../../../../assets/images/logo.png" alt="..." height="130">
+          </div>
+          <div class="text">
+            <h2>Estoque</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
         <div class="filters">
-            <div class="status">
-                <div class="input-group input-group-sm">
-                    <select class="form-select form-select-sm">
-                        <option selected disabled>Categoria</option>
-                        <option value="true">Ativo</option>
-                        <option value="false">Não Ativo</option>
-                    </select>
-                </div>
+          <div class="parameter">
+            <div class="input-group input-group-sm">
+              <input type="text" class="form-control" placeholder="Digite o nome...">
+              <button class="input-group-text"><i class="pi pi-search" style="font-size: .8rem;"></i></button>
             </div>
-            <div class="parameter">
-                <div class="input-group input-group-sm">
-                    <input type="text" class="form-control" placeholder="Digite o nome...">
-                    <button class="input-group-text"><i class="pi pi-search"></i></button>
-                    <button class="input-group-text"><i class="pi pi-sync"></i></button>
-                </div>
-            </div>
+          </div>
+          <div class="status">
+            <button type="button" class="btn btn-primary btn-sm" (click)="gerarRelatorioPDF(produtos)"><i
+                class="pi pi-print pe-1" style="font-size: .8rem;"></i> Relatório</button>
+          </div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row pt-2" style="position: relative;">
+    <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-4" *ngFor="let produto of produtos; let i = index">
+      <app-estoque-item [produto]="produto" (eventRemoveProduct)="receiveEventRemoveProduct($event)"></app-estoque-item>
     </div>
 
-    <div class="row pt-2" style="position: relative;">
-        <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-4" *ngFor="let produto of produtos; let i = index">
-            <app-estoque-item [produto]="produto" (eventRemoveProduct)="receiveEventRemoveProduct($event)"></app-estoque-item>
-        </div>
-
-        <div class="col-12" *ngIf="!produtos.length">
-            <app-empty-content message="Não há itens em estoque cadastrados!"></app-empty-content>
-        </div>
+    <div class="col-12" *ngIf="!produtos.length">
+      <app-empty-content message="Não há itens em estoque cadastrados!"></app-empty-content>
     </div>
+  </div>
 </div>

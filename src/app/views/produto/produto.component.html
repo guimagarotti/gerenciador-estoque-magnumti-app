@@ -1,98 +1,94 @@
 <div class="container mb-5">
-    <div class="animated fadeIn">
-        <div class="row">
-            <div class="col-12">
-                <div class="title">
-                    <div class="image">
-                        <img src="../../../../assets/images/logo.png" alt="..." height="130">
-                    </div>
-                    <div class="text">
-                        <h2>Produto</h2>
-                    </div>
-                </div>
-            </div>
+  <div class="animated fadeIn">
+    <div class="row">
+      <div class="col-12">
+        <div class="title">
+          <div class="image">
+            <img src="../../../../assets/images/logo.png" alt="..." height="130">
+          </div>
+          <div class="text">
+            <h2>Produto</h2>
+          </div>
         </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-header" style="padding-bottom: 0rem">
-                        <div class="row" style="padding-bottom: 0.5rem;">
-                            <div class="col-12 col-sm-3 col-md-4 col-lg-6" style="padding-top: 0.3rem;">
-                                Produtos
-                            </div>
-                            <div class="col-4 col-sm-3 col-md-3 col-lg-2 marginTop">
-                                <select class="form-control form-control-sm">
-                                    <option value="true">Ativo</option>
-                                    <option value="false">Não Ativo</option>
-                                </select>
-                            </div>
-                            <div class="col-8 col-sm-6 col-md-5 col-lg-4 marginTop">
-                                <div class="row">
-                                    <div class="input-group input-group-sm">
-                                        <input type="text" class="form-control"
-                                            placeholder="Digite o nome ou código...">
-                                        <button class="btn button-hover" type="button"
-                                            style="background-color: #ff5722; color: #fff;"><i class="pi pi-search"
-                                                style="font-size: .8rem;"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body" style="min-height: 200px;">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="listProdutos" *ngIf="produtos.length">
-                                    <table class="table text-center table-sm">
-                                        <thead class="table-light" style="border-top: 1px solid #ccc;">
-                                            <tr>
-                                                <th class="text-truncate">Nome</th>
-                                                <th class="text-truncate">Status</th>
-                                                <th class="text-truncate">Categoria</th>
-                                                <th class="text-truncate">Código</th>
-                                                <th class="text-truncate">Fornecedor</th>
-                                                <th class="text-truncate">Quantidade</th>
-                                                <th class="text-truncate">Validade</th>
-                                                <th class="text-truncate">Estoque Mínimo</th>
-                                                <th class="text-truncate">Estoque Máximo</th>
-                                                <th class="text-truncate">Editar</th>
-                                                <th class="text-truncate">Excluir</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr *ngFor="let produto of produtos; let i = index" class="text-truncate">
-                                                <td>{{ produto.name }}</td>
-                                                <td> <span class="badge"
-                                                        [ngClass]="produto.status ? 'text-bg-success' : 'text-bg-danger'">{{
-                                                        produto.status ? 'Ativo' : 'Inativo' }}</span></td>
-                                                <td>{{ produto.category }}</td>
-                                                <td>{{ produto.code }}</td>
-                                                <td>{{ produto.manufacturer }}</td>
-                                                <td>{{ produto.quantity }}</td>
-                                                <td>{{ produto.date }}</td>
-                                                <td>{{ produto.minimumLevel }}</td>
-                                                <td>{{ produto.maximumLevel }}</td>
-                                                <td><button type="button" class="btn btn-link btn-sm"
-                                                        [routerLink]="['form', produto.id]" title="Editar"
-                                                        routerLinkActive="router-link-active"><i
-                                                            class="pi pi-pencil text-primary"></i></button></td>
-                                                <td><button type="button" title="Excluir" class="btn btn-link btn-sm"
-                                                        (click)="removeProduto(produto.id)"><i
-                                                            class="pi pi-times text-danger"></i></button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                                <app-empty-content message="Não há nenhum produto cadastrado!" *ngIf="!produtos.length"></app-empty-content>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header" style="padding-bottom: 0rem">
+            <div class="row" style="padding-bottom: 0.5rem;">
+              <div class="col-12 col-sm-3 col-md-4 col-lg-6" style="padding-top: 0.3rem;">
+                Produtos
+              </div>
+              <div class="col-4 col-sm-3 col-md-3 col-lg-2 marginTop">
+                <select class="form-select form-select-sm">
+                  <option value="true">Ativo</option>
+                  <option value="false">Não Ativo</option>
+                </select>
+              </div>
+              <div class="col-8 col-sm-6 col-md-5 col-lg-4 marginTop">
+                <div class="row">
+                  <div class="input-group input-group-sm">
+                    <input type="text" class="form-control" placeholder="Digite o nome ou código...">
+                    <button class="btn button-hover" type="button" style="background-color: #ff5722; color: #fff;"><i
+                        class="pi pi-search" style="font-size: .8rem;"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-body" style="min-height: 200px;">
+            <div class="row">
+              <div class="col-12">
+                <div class="listProdutos" *ngIf="produtos.length">
+                  <table class="table text-center table-sm">
+                    <thead class="table-light" style="border-top: 1px solid #ccc;">
+                      <tr>
+                        <th class="text-truncate">Nome</th>
+                        <th class="text-truncate">Status</th>
+                        <th class="text-truncate">Categoria</th>
+                        <th class="text-truncate">Código</th>
+                        <th class="text-truncate">Fornecedor</th>
+                        <th class="text-truncate">Quantidade</th>
+                        <th class="text-truncate">Validade</th>
+                        <th class="text-truncate">Estoque Mínimo</th>
+                        <th class="text-truncate">Estoque Máximo</th>
+                        <!-- <th class="text-truncate">Editar</th>
+                                                <th class="text-truncate">Excluir</th> -->
+                        <th class="text-truncate">Ações</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let produto of produtos; let i = index" class="text-truncate">
+                        <td>{{ produto.name }}</td>
+                        <td> <span class="badge" [ngClass]="produto.status ? 'text-bg-success' : 'text-bg-danger'">{{
+                            produto.status ? 'Ativo' : 'Inativo' }}</span></td>
+                        <td>{{ produto.category }}</td>
+                        <td>{{ produto.code }}</td>
+                        <td>{{ produto.manufacturer }}</td>
+                        <td>{{ produto.quantity }}</td>
+                        <td>{{ produto.date }}</td>
+                        <td>{{ produto.minimumLevel }}</td>
+                        <td>{{ produto.maximumLevel }}</td>
+                        <td><button type="button" class="btn btn-link btn-sm" [routerLink]="['form', produto.id]"
+                            title="Editar" routerLinkActive="router-link-active"><i
+                              class="pi pi-pencil text-primary"></i></button> <button type="button" title="Excluir"
+                            class="btn btn-link btn-sm" (click)="removeProduto(produto.id)"><i
+                              class="pi pi-times text-danger"></i></button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <app-empty-content message="Não há nenhum produto cadastrado!"
+                  *ngIf="!produtos.length"></app-empty-content>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <button class="btnAddProduto" routerLink="/produto/form"><i class="pi pi-plus"></i></button>

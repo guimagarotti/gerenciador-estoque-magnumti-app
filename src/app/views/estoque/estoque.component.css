@@ -21,12 +21,55 @@
     margin-top: 0.4rem;
 }
 
-.container-fluid .header .filters .input-group-text:hover {
-    background-color: #dddedf;
+.container-fluid .header .status button {
+    background-color: #ff5722;
+    border: none;
+}
+
+.container-fluid .header .status button:hover {
+    cursor: pointer !important;
+    background-color: #fa4108 !important;
     transition: .5s;
 }
 
-.button-hover:hover {
+.container-fluid .header .filters .input-group-text {
+    background-color: #ff5722;
+    color: #fff;
+}
+
+.container-fluid .header .filters .input-group-text:hover {
     cursor: pointer !important;
     background-color: #fa4108 !important;
+    transition: .5s;
+}
+
+@media (max-width: 991px) {
+    .header .filters {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 767.5px) {
+    .container-fluid .header {
+        flex-direction: column;
+        justify-content: center !important;
+    }
+
+    .container-fluid .header .title {
+        margin-left: -25px;
+    }
+
+    .container-fluid .header .filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 25px;
+    }
+}
+
+@media(max-width: 389px) {
+    .container-fluid .header .filters .parameter {
+         width: 100%;
+     }
 }

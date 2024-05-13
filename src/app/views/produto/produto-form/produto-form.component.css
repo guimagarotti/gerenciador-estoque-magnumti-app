@@ -1,85 +1,85 @@
 section {
-    width: 100%;
-    border-radius: 1rem;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    border: 1px solid #ccc;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    min-height: 300px;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  width: 100%;
+  border-radius: 1rem;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border: 1px solid #ccc;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .header {
-    padding: 25px;
+  padding: 25px;
 }
 
 .card {
-    position: relative;
-    border: 1px solid #ccc;
+  position: relative;
+  border: 1px solid #ccc;
 }
 
 .card .card-header {
-    font-family: 'Work Sans', sans-serif;
+  font-family: 'Work Sans', sans-serif;
 }
 
 .card .title-between {
-    position: absolute;
-    top: -12px;
-    left: 20px;
-    background-color: #fff;
-    padding: 0 7px;
-    text-align: center;
-    font-family: 'Work Sans', sans-serif;
-    color: #ccc;
+  position: absolute;
+  top: -12px;
+  left: 20px;
+  background-color: #fff;
+  padding: 0 7px;
+  text-align: center;
+  font-family: 'Work Sans', sans-serif;
+  color: #ccc;
 }
 
 .card .icon-between {
-    position: absolute;
-    top: -10px;
-    right: 20px;
-    background-color: #fff;
-    padding: 0 7px;
-    text-align: center;
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  background-color: #fff;
+  padding: 0 7px;
+  text-align: center;
 }
 
 .card .icon-between i {
-    font-size: 1.2rem;
-    color: #ccc;
+  font-size: 1.2rem;
+  color: #ccc;
 }
 
 .switchContent {
-    margin-top: 36px !important;
+  margin-top: 36px !important;
 }
 
 .footer {
-    width: 100%;
-    border-top: 1px solid #e9e9e9;
-    height: 50px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 25px;
+  width: 100%;
+  border-top: 1px solid #e9e9e9;
+  height: 50px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 25px;
 }
 
 .footer .btn-post {
-    background-color: #ff5722;
-    color: #fff;
+  background-color: #ff5722;
+  color: #fff;
 }
 
 .footer .btn-post:hover {
-    cursor: pointer;
-    background-color: #fc450d;
+  cursor: pointer;
+  background-color: #fc450d;
 }
 
 .btnAddProduto {
-    position: fixed;
-    bottom: 1rem;
-    right: 0;
-    z-index: 1;
-    transition: .4s;
+  position: fixed;
+  bottom: 1rem;
+  right: 0;
+  z-index: 1;
+  transition: .4s;
 }

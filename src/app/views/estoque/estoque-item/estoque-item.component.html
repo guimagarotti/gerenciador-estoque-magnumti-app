@@ -1,137 +1,140 @@
 <div class="card">
-    <div style="border-bottom: 1px solid #C7C7C7; text-align: center;">
-        <img src="../../../../assets/images/logo.png" alt="..." height="150">
+  <div style="border-bottom: 1px solid #C7C7C7; text-align: center;">
+    <img src="../../../../assets/images/logo.png" alt="..." height="150">
+  </div>
+  <div class="card-header">
+    <div class="row mt-1">
+      <div class="col-12 d-flex justify-content-between">
+        <h5 class="card-title text-truncate m-0" [title]="produto.nome">
+          {{ produto.name }}
+        </h5>
+        <span class="iconSettings">
+          <i class="pi pi-truck" style="color: #ff5722"></i>
+        </span>
+      </div>
     </div>
-    <div class="card-header">
-        <div class="row mt-1">
-            <div class="col-12 d-flex justify-content-between">
-                <h5 class="card-title text-truncate m-0" [title]="produto.nome">
-                    {{ produto.name }}
-                </h5>
-                <span class="iconSettings">
-                    <i class="pi pi-truck" style="color: #ff5722"></i>
-                </span>
-            </div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="info-sequence m-0">
+        <div class="line">
+          <span class="title pe-4">Fabricante:</span>
+          <span class="value text-truncate" [title]="produto.manufacturer">{{ produto.manufacturer }}</span>
         </div>
-    </div>
-    <div class="card-body">
-        <div class="row">
-            <div class="info-sequence m-0">
-                <div class="line">
-                    <span class="title pe-4">Fabricante:</span>
-                    <span class="value text-truncate" [title]="produto.manufacturer">{{ produto.manufacturer }}</span>
-                </div>
-                <div class="line">
-                    <span class="title pe-4">Categoria:</span>
-                    <span class="value text-truncate" [title]="produto.category">{{ produto.category }}</span>
-                </div>
-                <div class="line">
-                    <span class="title pe-4">Validade:</span>
-                    <span class="value text-truncate" [title]="produto.date">{{ produto.date }}</span>
-                </div>
-                <div class="line">
-                    <span class="title pe-4">Quantidade:</span>
-                    <span class="value text-truncate" [title]="produto.quantity">{{ produto.quantity }}</span>
-                </div>
-                <div class="line">
-                    <span class="title pe-4">Lote:</span>
-                    <span class="value text-truncate" [title]="produto.code">{{ produto.code }}</span>
-                </div>
-            </div>
+        <div class="line">
+          <span class="title pe-4">Categoria:</span>
+          <span class="value text-truncate" [title]="produto.category">{{ produto.category }}</span>
         </div>
-    </div>
-    <div class="card-footer">
-        <div class="row me-1">
-            <div class="col-12 d-flex justify-content-end">
-                <button class="btn btn-sm" (click)="openModalWithClass(produtoDetails, 'modal-lg')"
-                    tooltip="Ver detalhes"><i class="pi pi-receipt" style="color: #ff5722"></i></button>
-                <button class="btn btn-sm" (click)="openModalWithClass(confirmRemove, 'modal-sm')" tooltip="Remover"><i
-                        class="pi pi-times text-danger"></i></button>
-            </div>
+        <div class="line">
+          <span class="title pe-4">Validade:</span>
+          <span class="value text-truncate" [title]="produto.date">{{ produto.date }}</span>
         </div>
+        <div class="line">
+          <span class="title pe-4">Quantidade:</span>
+          <span class="value text-truncate" [title]="produto.quantity" [ngClass]="verifyQuantityLevelForColor()">{{
+            produto.quantity }}</span>
+        </div>
+        <div class="line">
+          <span class="title pe-4">Lote:</span>
+          <span class="value text-truncate" [title]="produto.code">{{ produto.code }}</span>
+        </div>
+      </div>
     </div>
+  </div>
+  <div class="card-footer">
+    <div class="row me-1">
+      <div class="col-12 d-flex justify-content-end">
+        <button class="btn btn-sm" (click)="openModalWithClass(produtoDetails, 'modal-lg')" tooltip="Ver detalhes"><i
+            class="pi pi-receipt" style="color: #ff5722"></i></button>
+        <button class="btn btn-sm" (click)="openModalWithClass(confirmRemove, 'modal-sm')" tooltip="Remover"><i
+            class="pi pi-times text-danger"></i></button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <ng-template #produtoDetails>
-    <div class="modal-header">
-        <h4 class="modal-title pull-left">Produto</h4>
-        <button type="button" class="close btn-close pull-right" aria-label="Close" (click)="modalRef?.hide()">
-            <span aria-hidden="true" class="visually-hidden">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body">
-        <form class="row g-3 header m-2">
-            <div class="card col-12 mt-1">
-                <div class="title-between">
-                    <h6>Produto</h6>
-                </div>
-                <div class="icon-between">
-                    <i class="pi pi-align-left"></i>
-                </div>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Produto</h4>
+    <button type="button" class="close btn-close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form class="row g-3 header m-2">
+      <div class="card col-12 mt-1">
+        <div class="title-between">
+          <h6>Produto</h6>
+        </div>
+        <div class="icon-between">
+          <i class="pi pi-align-left"></i>
+        </div>
 
-                <div class="card-body p-2 mt-2">
-                    <div class="row">
-                        <div class="col-md-3 mb-2">
-                            <label class="form-label">Nome</label>
-                            <input type="email" class="form-control form-control-sm" [value]="produto.name" disabled>
-                        </div>
-                        <div class="col-md-3 mb-2">
-                            <label class="form-label">Categoria</label>
-                            <select class="form-select form-select-sm" [value]="produto.category" disabled>
-                                <option selected>Selecione</option>
-                                <option value="Gato">Gato</option>
-                                <option value="Cachorro">Cachorro</option>
-                                <option value="Aves">Aves</option>
-                                <option value="Pássaros">Pássaros</option>
-                            </select>
-                        </div>
-                        <div class="col-7 col-md-4 mb-2">
-                            <label class="form-label">Código</label>
-                            <input type="text" class="form-control form-control-sm" [value]="produto.code" disabled>
-                        </div>
-                        <div class="col-5 col-md-2 mb-2">
-                            <div class="form-check form-switch" style="padding-top: 35px;">
-                                <label class="form-check-label">Status</label>
-                                <input class="form-check-input" type="checkbox" role="switch" disabled
-                                    [checked]="produto.status">
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-2">
-                            <label class="form-label">Fornecedor</label>
-                            <input type="text" class="form-control form-control-sm" [value]="produto.manufacturer"
-                                disabled>
-                        </div>
-                        <div class="col-5 mb-2">
-                            <label class="form-label">Quantidade</label>
-                            <input type="number" class="form-control form-control-sm" [value]="produto.quantity"
-                                disabled>
-                        </div>
-                        <div class="col-7 col-md-5 mb-2">
-                            <label class="form-label">Validade</label>
-                            <input type="text" class="form-control form-control-sm" [value]="produto.date" disabled>
-                        </div>
-                        <div class="col-md-3 mb-2">
-                            <label class="form-label">Estoque Mínimo</label>
-                            <input type="number" class="form-control form-control-sm" [value]="produto.minimumLevel"
-                                disabled>
-                        </div>
-                        <div class="col-md-3 mb-2">
-                            <label class="form-label">Estoque Máximo</label>
-                            <input type="number" class="form-control form-control-sm" [value]="produto.maximumLevel"
-                                disabled>
-                        </div>
-                    </div>
-                </div>
+        <div class="card-body p-2 mt-2">
+          <div class="row">
+            <div class="col-md-3 mb-2">
+              <label class="form-label">Nome</label>
+              <input type="email" class="form-control form-control-sm" [value]="produto.name" disabled>
             </div>
-        </form>
-    </div>
+            <div class="col-md-3 mb-2">
+              <label class="form-label">Categoria</label>
+              <select class="form-select form-select-sm" [value]="produto.category" disabled>
+                <option selected>Selecione</option>
+                <option value="Gato">Gato</option>
+                <option value="Cachorro">Cachorro</option>
+                <option value="Aves">Aves</option>
+                <option value="Pássaros">Pássaros</option>
+              </select>
+            </div>
+            <div class="col-7 col-md-4 mb-2">
+              <label class="form-label">Código</label>
+              <input type="text" class="form-control form-control-sm" [value]="produto.code" disabled>
+            </div>
+            <div class="col-5 col-md-2 mb-2">
+              <div class="form-check form-switch" style="padding-top: 35px;">
+                <label class="form-check-label">Status</label>
+                <input class="form-check-input" type="checkbox" role="switch" disabled [checked]="produto.status">
+              </div>
+            </div>
+            <div class="col-md-4 mb-2">
+              <label class="form-label">Fornecedor</label>
+              <input type="text" class="form-control form-control-sm" [value]="produto.manufacturer" disabled>
+            </div>
+            <div class="col-5 mb-2">
+              <label class="form-label">Quantidade</label>
+              <input type="number" class="form-control form-control-sm" [value]="produto.quantity" disabled>
+            </div>
+            <div class="col-7 col-md-5 mb-2">
+              <label class="form-label">Validade</label>
+              <input type="text" class="form-control form-control-sm" [value]="produto.date" disabled>
+            </div>
+            <div class="col-md-3 mb-2">
+              <label class="form-label">Estoque Mínimo</label>
+              <input type="number" class="form-control form-control-sm" [value]="produto.minimumLevel" disabled>
+            </div>
+            <div class="col-md-3 mb-2">
+              <label class="form-label">Estoque Máximo</label>
+              <input type="number" class="form-control form-control-sm" [value]="produto.maximumLevel" disabled>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
 </ng-template>
 
 <ng-template #confirmRemove>
-    <div class="modal-body text-center">
-        <h5>Remover produto</h5>
-        <p class="message">Deseja realmente remover o produto?</p>
-        <button type="button" class="btn btn-sm btn-danger me-2" (click)="emitRemoveProduct(produto.id)">Sim</button>
-        <button type="button" class="btn btn-sm btn-primary" (click)="closeModal()">Não</button>
-    </div>
+  <div class="modal-body text-center">
+    <h5>Remover produto</h5>
+    <p class="message">Deseja realmente remover o produto?</p>
+    <button type="button" class="btn btn-sm btn-danger me-2" (click)="emitRemoveProduct(produto.id)">Sim</button>
+    <button type="button" class="btn btn-sm btn-primary" (click)="closeModal()">Não</button>
+  </div>
 </ng-template>
+
+<div class="btnAddProduto" *ngIf="alertStatus">
+  <alert type="warning">
+    <strong>Atenção! <i class="pi pi-exclamation-triangle" style="font-size: .9rem;"></i></strong> <br> Existem produtos
+    que estão em quantidades próximas ou ultrapassadas ao limite.
+  </alert>
+</div>
