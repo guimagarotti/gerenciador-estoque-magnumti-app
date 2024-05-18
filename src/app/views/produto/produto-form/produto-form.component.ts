@@ -1,7 +1,7 @@
 import { DefaultLayoutService } from './../../../containers/default-layout/default-layout.service';
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { CategoryTypeEnum } from './Enums/CategoryTypeEnum.enum';
 import { EstoqueService } from '../../estoque/estoque.service';
 import { DatePipe } from '@angular/common';
@@ -32,8 +32,7 @@ export class ProdutoFormComponent {
     public activatedRoute: ActivatedRoute,
     private estoqueService: EstoqueService,
     private datePipe: DatePipe,
-    private defaultLayoutService: DefaultLayoutService,
-    private router: Router
+    private defaultLayoutService: DefaultLayoutService
   ) {
     activatedRoute.params.subscribe((params: any) => this.produtoId = params['id'])
   }
@@ -46,6 +45,18 @@ export class ProdutoFormComponent {
       this.getProduct();
     else
       this.defaultLayoutService.emitToggleSpinner(false);
+
+    this.produtoForm.get('minimumLevel')?.valueChanges.subscribe(() => {
+      this.minimumMaximumLevelValidator();
+      this.quantityWithinLevelsValidator();
+    });
+    this.produtoForm.get('maximumLevel')?.valueChanges.subscribe(() => {
+      this.minimumMaximumLevelValidator();
+      this.quantityWithinLevelsValidator();
+    });
+    this.produtoForm.get('quantity')?.valueChanges.subscribe(() => {
+      this.quantityWithinLevelsValidator();
+    });
   }
 
   getProduct() {
@@ -57,6 +68,49 @@ export class ProdutoFormComponent {
     })
   }
 
+  minimumMaximumLevelValidator() {
+    const minimumLevelControl = this.produtoForm.get('minimumLevel');
+    const maximumLevelControl = this.produtoForm.get('maximumLevel');
+
+    if (minimumLevelControl && maximumLevelControl) {
+      const minimumLevel = minimumLevelControl.value;
+      const maximumLevel = maximumLevelControl.value;
+
+      if (minimumLevel != null && maximumLevel != null) {
+        if (minimumLevel >= maximumLevel) {
+          minimumLevelControl.setErrors({ minimumGreaterThanMaximum: true });
+          maximumLevelControl.setErrors({ minimumGreaterThanMaximum: true });
+        } else {
+          minimumLevelControl.setErrors(null);
+          maximumLevelControl.setErrors(null);
+        }
+      }
+    }
+  }
+
+  quantityWithinLevelsValidator() {
+    const quantityControl = this.produtoForm.get('quantity');
+    const minimumLevelControl = this.produtoForm.get('minimumLevel');
+    const maximumLevelControl = this.produtoForm.get('maximumLevel');
+
+    if (quantityControl && minimumLevelControl && maximumLevelControl) {
+      const quantity = quantityControl.value;
+      const minimumLevel = minimumLevelControl.value;
+      const maximumLevel = maximumLevelControl.value;
+
+      if (quantity != null && minimumLevel != null && maximumLevel != null) {
+        if (quantity < minimumLevel || quantity > maximumLevel) {
+          quantityControl.setErrors({ ...quantityControl.errors, quantityOutsideLevels: true });
+        } else {
+          if (quantityControl.hasError('quantityOutsideLevels')) {
+            const { quantityOutsideLevels, ...rest } = quantityControl.errors || {};
+            quantityControl.setErrors(Object.keys(rest).length ? rest : null);
+          }
+        }
+      }
+    }
+  }
+
   buildForm() {
     this.produtoForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
@@ -65,11 +119,16 @@ export class ProdutoFormComponent {
       category: [null, Validators.required],
       code: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
       manufacturer: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
-      quantity: [null, [Validators.required, Validators.min(1)]],
+      quantity: [null, [Validators.required, Validators.min(1), Validators.max(150)]],
       date: [null, Validators.required],
-      minimumLevel: [null, [Validators.required, Validators.min(1)]],
-      maximumLevel: [null, [Validators.required, Validators.min(1)]]
+      minimumLevel: [null, [Validators.required, Validators.min(1), Validators.max(150)]],
+      maximumLevel: [null, [Validators.required, Validators.min(1), Validators.max(150)]]
     })
+  }
+
+  valeu() {
+    console.log(this.produtoForm.get('minimumLevel')?.errors)
+    console.log(this.produtoForm.get('maximumLevel')?.errors)
   }
 
   updateForm(product: any) {

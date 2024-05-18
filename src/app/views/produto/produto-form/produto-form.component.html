@@ -1,14 +1,14 @@
 <section class="mb-3">
   <div class="row">
     <div class="col-12"
-      style="background-color: #ececec; border-bottom: 1px solid #ccc; padding: 10px 30px; display: flex;">
+      style="background-color: #ececec; border-bottom: 1px solid #ccc; padding: 10px 30px; display: flex; align-items: center;">
       <div class="col-10">
         <span style="font-size: 19px; font-family: 'Work Sans', sans-serif;"><i class="pi pi-cart-arrow-down pe-1"></i>
-          Produto</span>
+          Cadastro de Produto</span>
       </div>
       <div class="col-2 d-flex justify-content-end">
-        <button class="btn btn-sm" routerLink="/produto"><i class="pi pi-undo"
-            style="font-size: 1.1rem; color: #aaa;"></i></button>
+        <button class="btn btn-sm btn-post" routerLink="/produto"><i class="pi pi-undo"
+            style="font-size: .8rem"></i></button>
       </div>
     </div>
   </div>
@@ -83,6 +83,12 @@
             <div class="invalid-feedback" *ngIf="produtoForm.get('quantity')?.hasError('min')">
               Valor deve ser maior que 0!
             </div>
+            <div class="invalid-feedback" *ngIf="produtoForm.get('quantity')?.hasError('max')">
+              Valor deve ser menor que 150!
+            </div>
+            <div class="invalid-feedback" *ngIf="produtoForm.get('quantity')?.hasError('quantityOutsideLevels')">
+              Valor deve estar entre o range!
+            </div>
           </div>
           <div class="col-6 col-md-6 mb-2">
             <label class="form-label">Validade</label>
@@ -91,7 +97,7 @@
               Data obrigatória!
             </div>
           </div>
-          <div class="col-6 col-md-3 mb-2">
+          <div class="col-6 col-md-5 col-lg-3 mb-2">
             <label class="form-label">Estoque Mínimo</label>
             <input type="number" min="0" class="form-control" formControlName="minimumLevel"
               [ngClass]="applyErrors('minimumLevel')">
@@ -101,8 +107,15 @@
             <div class="invalid-feedback" *ngIf="produtoForm.get('minimumLevel')?.hasError('min')">
               Valor deve ser maior que 0!
             </div>
+            <div class="invalid-feedback" *ngIf="produtoForm.get('minimumLevel')?.hasError('max')">
+              Valor deve ser menor que 150!
+            </div>
+            <div class="invalid-feedback"
+              *ngIf="produtoForm.get('minimumLevel')?.hasError('minimumGreaterThanMaximum')">
+              Valor maior que o máximo!
+            </div>
           </div>
-          <div class="col-6 col-md-3 mb-2">
+          <div class="col-6 col-md-5 col-lg-3 mb-2">
             <label class="form-label">Estoque Máximo</label>
             <input type="number" min="0" class="form-control" formControlName="maximumLevel"
               [ngClass]="applyErrors('maximumLevel')">
@@ -112,6 +125,13 @@
             <div class="invalid-feedback" *ngIf="produtoForm.get('maximumLevel')?.hasError('min')">
               Valor deve ser maior que 0!
             </div>
+            <div class="invalid-feedback" *ngIf="produtoForm.get('maximumLevel')?.hasError('max')">
+              Valor deve ser menor que 150!
+            </div>
+            <div class="invalid-feedback"
+              *ngIf="produtoForm.get('maximumLevel')?.hasError('minimumGreaterThanMaximum')">
+              Valor menor que o mínimo!
+            </div>
           </div>
         </div>
       </div>
@@ -119,7 +139,10 @@
   </form>
   <div class="footer">
     <div class="col-12 d-flex justify-content-end">
-      <button type="submit" class="btn btn-sm btn-post" (click)="submitForm()"><i class="pi pi-save pe-1"
+      <button type="submit" class="btn btn-sm btn-clear me-2" (click)="cleanForm()"><i class="pi pi-filter pe-1"
+          style="font-size: 0.8rem; color: #fff;"></i>
+        Limpar</button>
+      <button type="submit" class="btn btn-sm btn-post" (click)="submitForm()"><i class="pi pi-check pe-1"
           style="font-size: 0.8rem; color: #fff;"></i>
         Cadastrar</button>
     </div>

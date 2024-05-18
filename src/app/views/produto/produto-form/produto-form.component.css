@@ -66,14 +66,24 @@ section {
   padding: 25px;
 }
 
-.footer .btn-post {
+.btn-post {
   background-color: #ff5722;
   color: #fff;
 }
 
-.footer .btn-post:hover {
+.btn-post:hover {
   cursor: pointer;
   background-color: #fc450d;
+}
+
+.btn-clear {
+  background-color: #4B4B4B;
+  color: #fff;
+}
+
+.btn-clear:hover {
+  background-color: #303030;
+  color: #fff;
 }
 
 .btnAddProduto {

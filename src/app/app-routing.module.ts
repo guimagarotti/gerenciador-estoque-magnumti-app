@@ -10,7 +10,7 @@ import { ProdutoFormComponent } from './views/produto/produto-form/produto-form.
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'homepage',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {

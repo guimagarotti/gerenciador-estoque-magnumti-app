@@ -104,20 +104,21 @@ export class ProdutoComponent {
 
     this.estoqueService.deleteProduct(productId).subscribe((res: any) => {
       this.defaultLayoutService.emitToggleSpinner(false);
-      this.errStatus = true;
-      this.errType = "danger";
 
-      setTimeout(() => {
-        this.errStatus = false;
-      }, 3000);
-    }, (err: any) => {
-      console.log(err.error.text);
-      this.defaultLayoutService.emitToggleSpinner(false);
       this.closeModal();
       this.getProducts();
 
       this.errStatus = true;
       this.errType = "success";
+
+      setTimeout(() => {
+        this.errStatus = false;
+      }, 3000);
+    }, (err: any) => {
+      this.defaultLayoutService.emitToggleSpinner(false);
+
+      this.errStatus = true;
+      this.errType = "danger";
 
       setTimeout(() => {
         this.errStatus = false;

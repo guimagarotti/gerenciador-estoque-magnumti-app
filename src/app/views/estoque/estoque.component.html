@@ -29,7 +29,7 @@
           <div class="category">
             <select class="form-select form-select-sm" (change)="getProductsByCategory()"
               [(ngModel)]="selectedCategoryType">
-              <!-- <option [value]="null" selected>Todos</option> -->
+              <option [value]="categoryType.TODOS" selected disabled>Geral</option>
               <option [value]="categoryType.CACHORRO">Cachorro</option>
               <option [value]="categoryType.GATO">Gato</option>
               <option [value]="categoryType.AVE">Ave</option>

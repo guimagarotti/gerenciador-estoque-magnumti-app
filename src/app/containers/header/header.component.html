@@ -1,46 +1,50 @@
 <section class="container-fluid">
-    <div class="container">
-        <header>
-            <button class="buttonSidebard">
-                <i class="pi pi-th-large" style="font-size: 0.9rem; color: #888;"></i>
-            </button>
-            <div class="boxImg">
-                <img src="./../../../assets/images/logo.png" alt="">
-            </div>
-            <nav>
-                <ul>
-                    <li><a routerLink="/homepage" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a></li>
-                    <li><a routerLink="/sobrenos" routerLinkActive="active">Sobre Nós</a></li>
-                    <li><a routerLink="/produto" routerLinkActive="active">Produto</a></li>
-                    <li><a routerLink="/estoque" routerLinkActive="active">Estoque</a></li>
-                </ul>      
-            </nav>
-            <div class="buttons">
-                <div class="sec-center"> 	
-                    <input class="dropdown" type="checkbox" id="dropdown" name="dropdown" [(ngModel)]="statusMenu" />
-                    <label class="for-dropdown cogDesign" for="dropdown" ><i class="pi pi-cog" style="margin-left: 2px;"></i></label>
-                    <div class="section-dropdown"> 
-                        <a (click)="logout()" class="linkMenu">Sair <i class="pi pi-sign-out"></i></a>
-                    </div>
-                </div>
+  <div class="container">
+    <header>
+      <button class="buttonSidebard">
+        <i class="pi pi-th-large" style="font-size: 0.9rem; color: #888;"></i>
+      </button>
+      <div class="boxImg">
+        <img src="./../../../assets/images/logo.png" alt="">
+      </div>
+      <nav>
+        <ul>
+          <li><a routerLink="/homepage" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+          </li>
+          <li><a routerLink="/sobrenos" routerLinkActive="active">Sobre Nós</a></li>
+          <li><a routerLink="/produto" routerLinkActive="active">Produto</a></li>
+          <li><a routerLink="/estoque" routerLinkActive="active">Estoque</a></li>
+        </ul>
+      </nav>
+      <div class="buttons">
+        <div class="sec-center">
+          <input class="dropdown" type="checkbox" id="dropdown" name="dropdown" [(ngModel)]="statusMenu" />
+          <label class="for-dropdown cogDesign" for="dropdown"><i class="pi pi-cog"
+              style="margin-left: 2px;"></i></label>
+          <div class="section-dropdown">
+            <a (click)="logout()" class="linkMenu">Sair <i class="pi pi-sign-out"></i></a>
+          </div>
+        </div>
 
-                <button class="burguer" (click)="activeHeader()"><i class="pi pi-align-justify" [ngClass]="{'pi-times': statusHeader, 'pi-align-justify': !statusHeader}" style="margin-top: 5px;"></i></button>
-            </div>
-        </header>
-    </div>  
+        <button class="burguer" (click)="activeHeader()"><i class="pi pi-align-justify"
+            [ngClass]="{'pi-times': statusHeader, 'pi-align-justify': !statusHeader}"
+            style="margin-top: 5px;"></i></button>
+      </div>
+    </header>
+  </div>
 </section>
 <div class="responsiveHeader">
-    <div class="responsiveHeaderContent" [ngClass]="{'active': statusHeader}">
-        <nav (click)="activeHeader()">
-            <ul>
-                <li><a routerLink="/homepage" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a></li>
-                <li><a routerLink="/sobrenos" routerLinkActive="active">Sobre Nós</a></li>
-                <li><a routerLink="/produto" routerLinkActive="active">Produto</a></li>
-                <li><a routerLink="/estoque" routerLinkActive="active">Estoque</a></li>
-            </ul>
-        </nav>
-        <div class="signUp">
-            <button routerLink="/login"><i class="pi pi-sign-out"></i></button>
-        </div>
+  <div class="responsiveHeaderContent" [ngClass]="{'active': statusHeader}">
+    <nav (click)="activeHeader()">
+      <ul>
+        <li><a routerLink="/homepage" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a></li>
+        <li><a routerLink="/sobrenos" routerLinkActive="active">Sobre Nós</a></li>
+        <li><a routerLink="/produto" routerLinkActive="active">Produto</a></li>
+        <li><a routerLink="/estoque" routerLinkActive="active">Estoque</a></li>
+      </ul>
+    </nav>
+    <div class="signUp">
+      <button routerLink="/login"><i class="pi pi-power-off" style="color: #fff"></i></button>
     </div>
+  </div>
 </div>

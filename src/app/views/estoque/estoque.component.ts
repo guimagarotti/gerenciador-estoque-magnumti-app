@@ -14,7 +14,7 @@ export class EstoqueComponent {
   produtos: Array<any> = [];
 
   categoryType = CategoryTypeEnum;
-  selectedCategoryType: CategoryTypeEnum = CategoryTypeEnum.CACHORRO;
+  selectedCategoryType: CategoryTypeEnum = CategoryTypeEnum.TODOS;
 
   errStatus: boolean = false;
   errType: string = "danger";
@@ -89,7 +89,7 @@ export class EstoqueComponent {
   }
 
   receiveEventRemoveProduct(productId: number) {
-    this.removeProduto(productId);
+    this.removeProduto(productId + 123);
   }
 
   removeProduto(productId: any): void {
@@ -97,18 +97,19 @@ export class EstoqueComponent {
 
     this.estoqueService.deleteProduct(productId).subscribe((res: any) => {
       this.defaultLayoutService.emitToggleSpinner(false);
+      this.getProducts();
+
       this.errStatus = true;
-      this.errType = "danger";
+      this.errType = "success";
 
       setTimeout(() => {
         this.errStatus = false;
       }, 3000);
     }, (err: any) => {
       this.defaultLayoutService.emitToggleSpinner(false);
-      this.getProducts();
 
       this.errStatus = true;
-      this.errType = "success";
+      this.errType = "danger";
 
       setTimeout(() => {
         this.errStatus = false;

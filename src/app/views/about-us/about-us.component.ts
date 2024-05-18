@@ -15,6 +15,6 @@ export class AboutUsComponent {
 
     setTimeout(() => {
       this.defaultLayoutService.emitToggleSpinner(false);
-    }, 1000);
+    }, 500);
   }
 }

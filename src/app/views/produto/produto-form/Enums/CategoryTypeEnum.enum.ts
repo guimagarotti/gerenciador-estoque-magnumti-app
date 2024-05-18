@@ -1,6 +1,7 @@
 export enum CategoryTypeEnum {
-    CACHORRO = "CACHORRO",
-    GATO = "GATO",
-    AVE = "AVE",
-    PEIXE = "PEIXE"
+  TODOS = "",
+  CACHORRO = "CACHORRO",
+  GATO = "GATO",
+  AVE = "AVE",
+  PEIXE = "PEIXE"
 }
