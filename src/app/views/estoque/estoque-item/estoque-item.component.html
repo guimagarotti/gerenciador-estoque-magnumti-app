@@ -5,7 +5,7 @@
   <div class="card-header">
     <div class="row mt-1">
       <div class="col-12 d-flex justify-content-between">
-        <h5 class="card-title text-truncate m-0" [title]="produto.nome">
+        <h5 class="card-title text-truncate m-0" [title]="produto.name">
           {{ produto.name }}
         </h5>
         <span class="iconSettings">
@@ -27,7 +27,8 @@
         </div>
         <div class="line">
           <span class="title pe-4">Validade:</span>
-          <span class="value text-truncate" [title]="produto.date">{{ produto.date }}</span>
+          <span class="value text-truncate" [title]="produto.date" [ngClass]="verifyValidity(produto.date)">{{
+            produto.date }}</span>
         </div>
         <div class="line">
           <span class="title pe-4">Quantidade:</span>
@@ -78,12 +79,11 @@
             </div>
             <div class="col-md-3 mb-2">
               <label class="form-label">Categoria</label>
-              <select class="form-select form-select-sm" [value]="produto.category" disabled>
-                <option selected>Selecione</option>
-                <option value="Gato">Gato</option>
-                <option value="Cachorro">Cachorro</option>
-                <option value="Aves">Aves</option>
-                <option value="Pássaros">Pássaros</option>
+              <select class="form-select form-select-sm" disabled>
+                <option [value]="categoryType.CACHORRO">Cachorro</option>
+                <option [value]="categoryType.GATO">Gato</option>
+                <option [value]="categoryType.AVE">Ave</option>
+                <option [value]="categoryType.PEIXE">Peixe</option>
               </select>
             </div>
             <div class="col-7 col-md-4 mb-2">
@@ -132,9 +132,5 @@
   </div>
 </ng-template>
 
-<div class="btnAddProduto" *ngIf="alertStatus">
-  <alert type="warning">
-    <strong>Atenção! <i class="pi pi-exclamation-triangle" style="font-size: .9rem;"></i></strong> <br> Existem produtos
-    que estão em quantidades próximas ou ultrapassadas ao limite.
-  </alert>
-</div>
+<app-alert-message type="info" *ngIf="alertStatus" title="Alerta!" details="Existem produtos
+  que estão em quantidades próximas ou ultrapassadas ao limite ou data de validade."></app-alert-message>

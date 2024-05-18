@@ -21,7 +21,7 @@
                 Produtos
               </div>
               <div class="col-4 col-sm-3 col-md-3 col-lg-2 marginTop">
-                <select class="form-select form-select-sm">
+                <select class="form-select form-select-sm" [(ngModel)]="status" (change)="getProducts()">
                   <option value="true">Ativo</option>
                   <option value="false">Não Ativo</option>
                 </select>
@@ -29,9 +29,12 @@
               <div class="col-8 col-sm-6 col-md-5 col-lg-4 marginTop">
                 <div class="row">
                   <div class="input-group input-group-sm">
-                    <input type="text" class="form-control" placeholder="Digite o nome ou código...">
-                    <button class="btn button-hover" type="button" style="background-color: #ff5722; color: #fff;"><i
-                        class="pi pi-search" style="font-size: .8rem;"></i></button>
+                    <input type="text" class="form-control" placeholder="Busque pelo nome..." [(ngModel)]="parameter"
+                      (keydown.enter)="getProductsByName()" (keyup)="checkEmptyInput()">
+                    <button class="btn button-hover" type="button" style="background-color: #ff5722; color: #fff;"
+                      (click)="getProductsByName()"><i class="pi pi-search" style="font-size: .8rem;"></i></button>
+                    <button *ngIf="parameter.length" class="btn btn-danger" type="button" (click)="clearParameter()"><i
+                        class="pi pi-times" style="font-size: .8rem;"></i></button>
                   </div>
                 </div>
               </div>
@@ -73,7 +76,7 @@
                         <td><button type="button" class="btn btn-link btn-sm" [routerLink]="['form', produto.id]"
                             title="Editar" routerLinkActive="router-link-active"><i
                               class="pi pi-pencil text-primary"></i></button> <button type="button" title="Excluir"
-                            class="btn btn-link btn-sm" (click)="removeProduto(produto.id)"><i
+                            class="btn btn-link btn-sm" (click)="openModal(confirmRemove, produto.id)"><i
                               class="pi pi-times text-danger"></i></button></td>
                       </tr>
                     </tbody>
@@ -90,5 +93,17 @@
     </div>
   </div>
 </div>
+
+<app-alert-message [type]="errType" *ngIf="errStatus"></app-alert-message>
+
+<ng-template #confirmRemove>
+  <div class="modal-body text-center">
+    <h5>Remover produto</h5>
+    <p class="message">Deseja realmente remover o produto?</p>
+    <button type="button" class="btn btn-sm btn-danger me-2"
+      (click)="removeProduto(this.productIdToRemove)">Sim</button>
+    <button type="button" class="btn btn-sm btn-primary" (click)="closeModal()">Não</button>
+  </div>
+</ng-template>
 
 <button class="btnAddProduto" routerLink="/produto/form"><i class="pi pi-plus"></i></button>

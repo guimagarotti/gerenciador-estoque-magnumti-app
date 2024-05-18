@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ILoginRequest } from 'src/app/interfaces/ILoginRequest';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -12,11 +13,15 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
-  registerUser(form: any) {
-    return this.http.post<any>(`${this.URL}/create`, form, { observe: 'response' });
+  getUserById(id: string): any {
+    return this.http.get(`${this.URL}/${id}`);
   }
 
-  verifyUser(form: any) {
-    return this.http.get<any>(`${this.URL}/create`);
+  deleteUser(id: string): any {
+    return this.http.delete(`${this.URL}/remove/${id}`);
+  }
+
+  authenticateUser(user: any) {
+    return this.http.post(`${this.URL}/login`, user);
   }
 }

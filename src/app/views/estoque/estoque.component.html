@@ -18,9 +18,23 @@
         <div class="filters">
           <div class="parameter">
             <div class="input-group input-group-sm">
-              <input type="text" class="form-control" placeholder="Digite o nome...">
-              <button class="input-group-text"><i class="pi pi-search" style="font-size: .8rem;"></i></button>
+              <input type="text" class="form-control" placeholder="Busque pelo nome..." [(ngModel)]="parameter"
+                (keydown.enter)="getProductsByName()" (keyup)="checkEmptyInput()">
+              <button class="btn button-hover" type="button" style="background-color: #ff5722; color: #fff;"
+                (click)="getProductsByName()"><i class="pi pi-search" style="font-size: .8rem;"></i></button>
+              <button *ngIf="parameter.length" class="btn btn-danger" type="button" (click)="clearParameter()"><i
+                  class="pi pi-times" style="font-size: .8rem;"></i></button>
             </div>
+          </div>
+          <div class="category">
+            <select class="form-select form-select-sm" (change)="getProductsByCategory()"
+              [(ngModel)]="selectedCategoryType">
+              <!-- <option [value]="null" selected>Todos</option> -->
+              <option [value]="categoryType.CACHORRO">Cachorro</option>
+              <option [value]="categoryType.GATO">Gato</option>
+              <option [value]="categoryType.AVE">Ave</option>
+              <option [value]="categoryType.PEIXE">Peixe</option>
+            </select>
           </div>
           <div class="status">
             <button type="button" class="btn btn-primary btn-sm" (click)="gerarRelatorioPDF(produtos)"><i
@@ -41,3 +55,17 @@
     </div>
   </div>
 </div>
+
+<app-alert-message [type]="errType" *ngIf="errStatus"></app-alert-message>
+
+<!-- <div class="alertArea" *ngIf="errStatus">
+  <alert type="danger">
+    <strong>Falha!</strong> Não foi possível processar sua solicitação ao servidor.
+  </alert>
+</div>
+
+<div class="alertArea" *ngIf="successStatus">
+  <alert type="success">
+    <strong>Sucesso!</strong> Solicitação ao servidor processada com sucesso.
+  </alert>
+</div> -->

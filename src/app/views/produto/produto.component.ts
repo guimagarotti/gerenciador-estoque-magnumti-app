@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { NgxSpinnerService } from 'ngx-spinner';
+import { EstoqueService } from './../estoque/estoque.service';
+import { Component, EventEmitter, Output, TemplateRef } from '@angular/core';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { DefaultLayoutService } from 'src/app/containers/default-layout/default-layout.service';
 
 @Component({
@@ -9,32 +10,123 @@ import { DefaultLayoutService } from 'src/app/containers/default-layout/default-
 })
 export class ProdutoComponent {
 
+  modalRef?: BsModalRef;
+
   produtos: Array<any> = [];
 
-  constructor(private defaultLayoutService: DefaultLayoutService) { }
+  errStatus: boolean = false;
+  errType: string = "danger";
+
+  productIdToRemove!: string;
+
+  parameter: string = "";
+  status: boolean = true;
+
+  constructor(
+    private defaultLayoutService: DefaultLayoutService,
+    private estoqueService: EstoqueService,
+    private modalService: BsModalService
+  ) { }
 
   ngOnInit() {
     this.defaultLayoutService.emitToggleSpinner(true);
-
-    setTimeout(() => {
-      this.defaultLayoutService.emitToggleSpinner(false);
-      this.getProducts();
-    }, 1000);
+    this.getProducts();
   }
 
   getProducts() {
-    this.produtos = [
-      { id: 1, name: 'Produto 1', status: true, manufacturer: 'Magnus', category: 'Gato', date: '27/08/2024', quantity: 16, code: 'BR451YWQ', minimumLevel: 0, maximumLevel: 100 },
-      { id: 2, name: 'Produto 2', status: true, manufacturer: 'Formula', category: 'Cachorro', date: '05/03/2024', quantity: 32, code: 'BR766YZJ', minimumLevel: 30, maximumLevel: 100 },
-      { id: 3, name: 'Produto 3', status: false, manufacturer: 'Royal', category: 'Aves', date: '12/12/2023', quantity: 3, code: 'BR109LKO', minimumLevel: 0, maximumLevel: 100 },
-      { id: 4, name: 'Produto 4', status: true, manufacturer: 'Pedigree', category: 'Pássaros', date: '16/09/2024', quantity: 67, code: 'BR483ABR', minimumLevel: 0, maximumLevel: 100 },
-      { id: 5, name: 'Produto 5', status: true, manufacturer: 'Magnus', category: 'Cachorro', date: '30/02/2024', quantity: 24, code: 'BR049QBN', minimumLevel: 0, maximumLevel: 100 },
-      { id: 6, name: 'Produto 6', status: false, manufacturer: 'Askpoof', category: 'Gato', date: '04/05/2023', quantity: 68, code: 'BR012VVO', minimumLevel: 0, maximumLevel: 100 }
-    ]
+    this.estoqueService.getProductsByStatus(this.status).subscribe((res: any) => {
+      this.produtos = res;
+      this.defaultLayoutService.emitToggleSpinner(false);
+    }, (err: any) => {
+      this.errStatus = true;
+      this.errType = "danger";
+
+      setTimeout(() => {
+        this.errStatus = false;
+      }, 3000);
+      this.defaultLayoutService.emitToggleSpinner(false);
+    })
   }
 
-  removeProduto(productId: number): void {
-    this.produtos = this.produtos.filter(produto => produto.id !== productId);
-    console.log(this.produtos);
+  getProductsByName() {
+    if (this.parameter.length > 0) {
+      this.defaultLayoutService.emitToggleSpinner(true);
+
+      this.estoqueService.getProductsByNameContaining(this.parameter).subscribe((res: any) => {
+        this.defaultLayoutService.emitToggleSpinner(false);
+        this.produtos = res;
+        console.log(res);
+      }, (err: any) => {
+        this.errStatus = true;
+        this.errType = "danger";
+
+        setTimeout(() => {
+          this.errStatus = false;
+        }, 3000);
+        this.defaultLayoutService.emitToggleSpinner(false);
+      })
+    }
+  }
+
+  /* getProductsByStatus() {
+    this.defaultLayoutService.emitToggleSpinner(true);
+
+    this.estoqueService.getProductsByStatus(this.status).subscribe((res: any) => {
+      this.defaultLayoutService.emitToggleSpinner(false);
+      this.produtos = res;
+      console.log(res);
+    }, (err: any) => {
+      this.defaultLayoutService.emitToggleSpinner(false);
+      console.log(err);
+    })
+  } */
+
+  checkEmptyInput() {
+    if (this.parameter == '')
+      this.getProducts();
+  }
+
+  openModal(template: TemplateRef<any>, productId: string) {
+    this.productIdToRemove = productId;
+
+    this.modalRef = this.modalService.show(
+      template,
+      Object.assign({}, { class: `gray modal-sm` })
+    );
+  }
+
+  closeModal() {
+    this.modalRef?.hide();
+  }
+
+  removeProduto(productId: any): void {
+    this.defaultLayoutService.emitToggleSpinner(true);
+
+    this.estoqueService.deleteProduct(productId).subscribe((res: any) => {
+      this.defaultLayoutService.emitToggleSpinner(false);
+      this.errStatus = true;
+      this.errType = "danger";
+
+      setTimeout(() => {
+        this.errStatus = false;
+      }, 3000);
+    }, (err: any) => {
+      console.log(err.error.text);
+      this.defaultLayoutService.emitToggleSpinner(false);
+      this.closeModal();
+      this.getProducts();
+
+      this.errStatus = true;
+      this.errType = "success";
+
+      setTimeout(() => {
+        this.errStatus = false;
+      }, 3000);
+    });
+  }
+
+  clearParameter() {
+    this.parameter = "";
+    this.getProducts();
   }
 }

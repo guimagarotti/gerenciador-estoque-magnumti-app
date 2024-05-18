@@ -1,0 +1,6 @@
+<div class="alertArea" *ngFor="let alert of alerts">
+  <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">
+    <strong>{{ alert.type == 'success' ? 'Sucesso!' : alert.type == 'info' ? this.title : 'Falha!' }}</strong> {{ alert.type == 'success' ?
+    'Solicitação ao servidor processada com sucesso.' : alert.type == 'info' ? this.details : 'Não foi possível processar sua solicitação ao servidor.' }}
+  </alert>
+</div>

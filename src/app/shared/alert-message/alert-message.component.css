@@ -1,0 +1,43 @@
+.alertArea {
+  position: fixed;
+  bottom: 1rem;
+  left: 0;
+  z-index: 1;
+  transition: .4s;
+}
+
+:host ::ng-deep .alert-danger {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+
+  border-bottom: 3px solid red;
+  color: red;
+  font-family: "Work Sans", sans-serif;
+}
+
+:host ::ng-deep .alert-success {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+
+  border-bottom: 3px solid green;
+  color: green;
+  font-family: "Work Sans", sans-serif;
+}
+
+:host ::ng-deep .alert-info {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+
+  border-bottom: 3px solid #055160;
+  color: #055160;
+  font-family: "Work Sans", sans-serif;
+}

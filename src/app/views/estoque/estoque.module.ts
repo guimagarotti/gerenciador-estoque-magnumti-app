@@ -10,6 +10,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { EmptyContentModule } from 'src/app/shared/empty-content/empty-content.module';
 import { ToastModule } from 'primeng/toast';
 import { AlertModule } from 'ngx-bootstrap/alert';
+import { AlertMessageModule } from 'src/app/shared/alert-message/alert-message.module';
 
 @NgModule({
   declarations: [EstoqueComponent, EstoqueItemComponent],
@@ -23,7 +24,8 @@ import { AlertModule } from 'ngx-bootstrap/alert';
     TooltipModule.forRoot(),
     EmptyContentModule,
     ToastModule,
-    AlertModule
+    AlertModule,
+    AlertMessageModule
   ],
   exports: [EstoqueComponent]
 })

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { CategoryTypeEnum } from '../produto/produto-form/Enums/CategoryTypeEnum.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -12,23 +13,39 @@ export class EstoqueService {
 
   constructor(private http: HttpClient) { }
 
-  getProducts(parameter: string, page: number, size: number, status: boolean): any {
-    return this.http.get(`${this.URL}?parameter=${parameter}&page=${page}&size=${size}&status=${status}`);
+  getProducts(): any {
+    return this.http.get(`${this.URL}`);
   }
 
-  getProduct(id: string): any {
+  getProductById(id: string): any {
     return this.http.get(`${this.URL}/${id}`);
   }
 
+  getProductsByStatus(status: boolean) {
+    return this.http.get(`${this.URL}/byStatus/${status}`);
+  }
+
+  getProductsByCategory(category: CategoryTypeEnum) {
+    return this.http.get(`${this.URL}/byCategory/${category}`);
+  }
+
+  getProductsByName(productName: string) {
+    return this.http.get(`${this.URL}/byName/${productName}`);
+  }
+
+  getProductsByNameContaining(parcialProductName: string) {
+    return this.http.get(`${this.URL}/byNameContaining/${parcialProductName}`);
+  }
+
   postProduct(product: any): any {
-    return this.http.post(`${this.URL}`, product);
+    return this.http.post(`${this.URL}/add`, product);
   }
 
   putAlert(product: any, id: string): any {
-    return this.http.put(`${this.URL}/${id}`, product);
+    return this.http.put(`${this.URL}/edit/${id}`, product);
   }
 
   deleteProduct(id: string): any {
-    return this.http.delete(`${this.URL}/${id}`);
+    return this.http.delete(`${this.URL}/remove/${id}`);
   }
 }

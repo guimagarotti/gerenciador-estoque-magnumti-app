@@ -1,58 +1,66 @@
 .container {
-    font-family: "Work Sans", sans-serif;
+  font-family: "Work Sans", sans-serif;
 }
 
 .container {
-    width: 100%;
+  width: 100%;
 }
 
 .listProdutos {
-    max-height: 400px;
-    overflow: auto;
-    scrollbar-width: thin;
-    scrollbar-color: #d8d8d8 transparent
+  max-height: 400px;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #d8d8d8 transparent
 }
 
 .btnAddProduto {
-    position: fixed;
-    bottom: 1rem;
-    right: 1rem;
-    z-index: 1;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    background-color: #ff5722;
-    color: #fff;
-    border: none;
-    transition: .4s;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 1;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: #ff5722;
+  color: #fff;
+  border: none;
+  transition: .4s;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .container .title {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .container .filters {
-    display: flex;
-    gap: 40px;
-    margin-top: 0.4rem;
+  display: flex;
+  gap: 40px;
+  margin-top: 0.4rem;
 }
 
 .container .filters .input-group-text:hover {
-    background-color: #dddedf;
-    transition: .5s;
+  background-color: #dddedf;
+  transition: .5s;
 }
 
 .button-hover:hover,
 .btnAddProduto:hover {
-    cursor: pointer !important;
-    background-color: #fa4108 !important;
+  cursor: pointer !important;
+  background-color: #fa4108 !important;
+}
+
+.alertArea {
+  position: fixed;
+  bottom: 1rem;
+  left: 0;
+  z-index: 1;
+  transition: .4s;
 }
 
 @media(max-width: 575px) {
-    .marginTop {
-        margin-top: 10px;
-    }
+  .marginTop {
+    margin-top: 10px;
+  }
 }
