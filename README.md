@@ -10,11 +10,6 @@
  Esse projeto consiste no desenvolvimento de um sistema de gerenciamento de estoque, que possibilitará à loja controlar de forma eficiente o fluxo de entrada e saída de produtos, monitorar o nível de estoque de produtos específicos, realizar reabastecimentos e gerar relatórios analíticos. Para atingir essa proposta,  o sistema deve armazenar as informações de cada produto (nome, fabricante, data de validade, funcionalidade, quantidade, lote). Sendo esperado também, que o sistema apresente notificações visuais, para quando um produto estiver em falta ou com baixa quantidade, além de alertas para a data de validade, gerando assim um sistema que prevê possíveis carências de produtos e evite situações de complicação. 
 </div>
 
-<br>
-<div align="center">
-  <img src="logo-magnumti.png" width="550px" height="350px">
-</div>
-
 ## Tecnologias / IDEs em Utilização - Front-End 💻: 
 <ul>
  <li>HTML;</li>
