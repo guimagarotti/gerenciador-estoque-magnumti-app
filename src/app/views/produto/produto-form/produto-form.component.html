@@ -4,7 +4,7 @@
       style="background-color: #ececec; border-bottom: 1px solid #ccc; padding: 10px 30px; display: flex; align-items: center;">
       <div class="col-10">
         <span style="font-size: 19px; font-family: 'Work Sans', sans-serif;"><i class="pi pi-cart-arrow-down pe-1"></i>
-          Cadastro de Produto</span>
+          {{ produtoId ? 'Edição de Produto' : 'Cadastro de Produto' }}</span>
       </div>
       <div class="col-2 d-flex justify-content-end">
         <button class="btn btn-sm btn-post" routerLink="/produto"><i class="pi pi-undo"
@@ -92,7 +92,8 @@
           </div>
           <div class="col-6 col-md-6 mb-2">
             <label class="form-label">Validade</label>
-            <input type="date" class="form-control" formControlName="date" [ngClass]="applyErrors('date')">
+            <input type="date" class="form-control" [min]="minDate" formControlName="date"
+              [ngClass]="applyErrors('date')">
             <div class="invalid-feedback" *ngIf="produtoForm.get('date')?.hasError('required')">
               Data obrigatória!
             </div>

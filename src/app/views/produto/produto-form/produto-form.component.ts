@@ -27,6 +27,8 @@ export class ProdutoFormComponent {
 
   product: any;
 
+  minDate!: string;
+
   constructor(
     private formBuilder: FormBuilder,
     public activatedRoute: ActivatedRoute,
@@ -57,6 +59,8 @@ export class ProdutoFormComponent {
     this.produtoForm.get('quantity')?.valueChanges.subscribe(() => {
       this.quantityWithinLevelsValidator();
     });
+
+    this.getCurrentDateString();
   }
 
   getProduct() {
@@ -126,9 +130,13 @@ export class ProdutoFormComponent {
     })
   }
 
-  valeu() {
-    console.log(this.produtoForm.get('minimumLevel')?.errors)
-    console.log(this.produtoForm.get('maximumLevel')?.errors)
+  getCurrentDateString() {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+
+    this.minDate = `${year}-${month}-${day}`;
   }
 
   updateForm(product: any) {

@@ -34,6 +34,7 @@ export class EstoqueComponent {
 
   getProducts() {
     this.estoqueService.getProductsByStatus(true).subscribe((res: any) => {
+      this.selectedCategoryType = CategoryTypeEnum.TODOS;
       this.produtos = res;
       this.defaultLayoutService.emitToggleSpinner(false);
     }, (err: any) => {
@@ -89,7 +90,7 @@ export class EstoqueComponent {
   }
 
   receiveEventRemoveProduct(productId: number) {
-    this.removeProduto(productId + 123);
+    this.removeProduto(productId);
   }
 
   removeProduto(productId: any): void {
@@ -98,13 +99,6 @@ export class EstoqueComponent {
     this.estoqueService.deleteProduct(productId).subscribe((res: any) => {
       this.defaultLayoutService.emitToggleSpinner(false);
       this.getProducts();
-
-      this.errStatus = true;
-      this.errType = "success";
-
-      setTimeout(() => {
-        this.errStatus = false;
-      }, 3000);
     }, (err: any) => {
       this.defaultLayoutService.emitToggleSpinner(false);
 

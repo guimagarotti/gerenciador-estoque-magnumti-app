@@ -8,7 +8,8 @@
         <label for="basic-url" class="form-label">Usuário</label>
         <div class="input-group">
           <span class="input-group-text"><i class="pi pi-envelope"></i></span>
-          <input type="text" class="form-control emailInput" formControlName="email" [ngClass]="applyErrors('email')">
+          <input type="text" class="form-control emailInput" formControlName="email" [ngClass]="applyErrors('email')"
+            tabindex="1">
           <div class="invalid-feedback" *ngIf="loginForm.get('email')?.hasError('required')">
             E-mail obrigatório!
           </div>
@@ -22,7 +23,7 @@
         <div class="input-group input-field input-field-password">
           <span class="input-group-text"><i class="pi pi-lock"></i></span>
           <input [type]="passwordEyes.signIn? 'password' : 'text'" class="form-control" style="border-right: none;"
-            formControlName="password">
+            formControlName="password" tabindex="2">
           <button class="btn-password" (click)="changePasswordEye('signIn')"><i class="pi"
               [ngClass]="{'pi-eye': passwordEyes.signIn, 'pi-eye-slash': !passwordEyes.signIn}"></i></button>
         </div>
@@ -30,7 +31,7 @@
     </form>
 
     <div class="btn-container">
-      <button type="button" class="btn btn-primary mt-2" (click)="authUser()"><i
+      <button type="button" class="btn btn-primary mt-2" (click)="authUser()" tabindex="3"><i
           class="pi pi-sign-in pe-2"></i>Entrar</button>
     </div>
   </div>
